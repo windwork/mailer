@@ -1,8 +1,8 @@
 <?php
-require_once __DIR__.'/../Exception.php';
-require_once __DIR__.'/../IMailer.php';
-require_once __DIR__.'/../MailerFactory.php';
-require_once __DIR__.'/SMTP.php';
+require_once '../Exception.php';
+require_once '../IMailer.php';
+require_once '../MailerFactory.php';
+require_once '../adapter/SMTP.php';
 
 use \wf\mailer\adapter\SMTP;
 
@@ -23,7 +23,7 @@ class SMTPTest extends PHPUnit_Framework_TestCase {
 		'mail_host' => 'smtp.163.com',
 		'mail_auth' => true,
 		'mail_user' => 'p_cm@163.com',
-		'mail_pass' => 'smtp密码',
+		'mail_pass' => 'CM->o.163.',
 	);
 	
 	/**
