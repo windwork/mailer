@@ -1,17 +1,18 @@
 {
   "name" : "windwork/mailer",
+  "type" : "library",
   "description" : "windwork mailer component，Windwork 发邮件组件",
-  "version" : "0.2.0",
+  "keywords": ["mailer","mail","smtp","sendmail"],
+  "version" : "0.2.1",
   "require" : {
     "php" : ">=5.5.0"
   },
   "license" : "MIT",
   "autoload" : {
     "psr-4" : {
-      "wf\\mailer\\" : "."
+      "wf\\mailer\\" : "lib"
     }
   },
-  "type" : "library",
   "authors" : [ {
     "name" : "Windwork Community",
     "homepage" : "http://windwork.org"

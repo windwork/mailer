@@ -1,8 +1,8 @@
 <?php
-require_once '../Exception.php';
-require_once '../IMailer.php';
-require_once '../MailerFactory.php';
-require_once '../adapter/SMTP.php';
+require_once '../lib/Exception.php';
+require_once '../lib/IMailer.php';
+require_once '../lib/MailerFactory.php';
+require_once '../lib/adapter/SMTP.php';
 
 use \wf\mailer\adapter\SMTP;
 
