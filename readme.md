@@ -3,7 +3,7 @@ Windwork 发邮件组件
 通过SMTP/mail函数发送邮件
 如果服务器安装有邮件服务器，如sendmail等，则可以使用内置的mail函数发送邮件获得更高的性能和更多的个性化参数，否则使用smtp发送。
 
-## useage
+## 使用案例
 ```
 // 使用smtp发送
 $cfg = array(
