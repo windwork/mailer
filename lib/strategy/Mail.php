@@ -19,10 +19,12 @@ use \wf\mailer\Exception;
  * @link        http://docs.windwork.org/manual/wf.mailer.html
  * @since       0.1.0
  */
-class Mail implements \wf\mailer\MailerInterface {
+class Mail implements \wf\mailer\MailerInterface 
+{
     protected $cfg;
 
-    public function __construct(array $cfg) {
+    public function __construct(array $cfg) 
+    {
         $this->cfg = $cfg;
     }
     
@@ -31,7 +33,8 @@ class Mail implements \wf\mailer\MailerInterface {
      * {@inheritDoc}
      * @see \wf\mailer\MailerInterface::send()
      */
-    public function send($to, $subject, $message, $from, $cc = '', $bcc = '') {
+    public function send($to, $subject, $message, $from, $cc = '', $bcc = '') 
+    {
         $to = \wf\mailer\Helper::emailEncode($to);
         $from = \wf\mailer\Helper::emailEncode($from);    
         $subject = \wf\mailer\Helper::encode($subject);
@@ -65,7 +68,6 @@ class Mail implements \wf\mailer\MailerInterface {
         
         if(!mail($to, $subject, $message, $headers)) {
             throw new Exception("Mail failed: {$to} {$subject}");
-            return false;
         }
         
         return true;

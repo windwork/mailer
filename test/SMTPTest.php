@@ -18,12 +18,12 @@ class SMTPTest extends PHPUnit_Framework_TestCase {
     private $sMTP;
     
     private $cfg = array(
-        'mailAdapter' => 'SMTP',
-        'mailPort' => 25,
-        'mailHost' => 'smtp.163.com',
-        'mailAuth' => true,
-        'mailUser' => 'p_cm@163.com',
-        'mailPass' => 'CM->o.163.',
+        'class' => 'SMTP',
+        'port' => 25,
+        'host' => 'smtp.163.com',
+        'auth' => true,
+        'user' => 'p_cm@163.com',
+        'pass' => 'CM->o.163.',
     );
     
     /**

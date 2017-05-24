@@ -17,7 +17,8 @@ namespace wf\mailer;
  * @link        http://docs.windwork.org/manual/wf.mailer.html
  * @since       0.1.0
  */
-interface MailerInterface {
+interface MailerInterface 
+{
     
     /**
      * 发送邮件

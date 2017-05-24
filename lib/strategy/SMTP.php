@@ -19,17 +19,19 @@ use \wf\mailer\Exception;
  * @link        http://docs.windwork.org/manual/wf.mailer.html
  * @since       0.1.0
  */
-class SMTP implements \wf\mailer\MailerInterface {
+class SMTP implements \wf\mailer\MailerInterface 
+{
     
     protected $cfg = array(
-        'mailPort' => 25,
-        'mailHost' => '',
-        'mailAuth' => true,
-        'mailUser' => '',
-        'mailPass' => '',
+        'port' => 25,
+        'host' => '',
+        'auth' => true,
+        'user' => '',
+        'pass' => '',
     );
     
-    public function __construct(array $cfg) {
+    public function __construct(array $cfg) 
+    {
         $this->cfg = $cfg;
     }
 
@@ -38,9 +40,10 @@ class SMTP implements \wf\mailer\MailerInterface {
      * {@inheritDoc}
      * @see \wf\mailer\MailerInterface::send()
      */
-    public function send($to, $subject, $message, $from = '', $cc = '', $bcc = '') {
+    public function send($to, $subject, $message, $from = '', $cc = '', $bcc = '') 
+    {
         // 端口
-        $this->cfg['mailPort'] = empty($this->cfg['mailPort']) ? 25 : $this->cfg['mailPort'];
+        $this->cfg['port'] = empty($this->cfg['port']) ? 25 : $this->cfg['port'];
         
         $to      = \wf\mailer\Helper::emailEncode($to);
         $from    = \wf\mailer\Helper::emailEncode($from);
@@ -67,23 +70,20 @@ class SMTP implements \wf\mailer\MailerInterface {
                  . "Content-type: text/html; charset=utf-8\r\n"
                  . "Content-Transfer-Encoding: base64\r\n";
          
-        if(!$fp = fsockopen($this->cfg['mailHost'], $this->cfg['mailPort'], $errno, $errstr, 30)) {
-            throw new Exception("SMTP ({$this->cfg['mailHost']}:{$this->cfg['mailPort']}) CONNECT - Unable to connect to the SMTP server");
-            return false;
+        if(!$fp = fsockopen($this->cfg['host'], $this->cfg['port'], $errno, $errstr, 30)) {
+            throw new Exception("SMTP ({$this->cfg['host']}:{$this->cfg['port']}) CONNECT - Unable to connect to the SMTP server");
         }
         stream_set_blocking($fp, true);
     
         $lastMessage = fgets($fp, 512);
         if(substr($lastMessage, 0, 3) != '220') {
-            throw new Exception("SMTP {$this->cfg['mailHost']}:{$this->cfg['mailPort']} CONNECT - $lastMessage");
-            return false;
+            throw new Exception("SMTP {$this->cfg['host']}:{$this->cfg['port']} CONNECT - $lastMessage");
         }
     
-        fputs($fp, ($this->cfg['mailAuth'] ? 'EHLO' : 'HELO')." windwork\r\n");
+        fputs($fp, ($this->cfg['auth'] ? 'EHLO' : 'HELO')." windwork\r\n");
         $lastMessage = fgets($fp, 512);
         if(substr($lastMessage, 0, 3) != 220 && substr($lastMessage, 0, 3) != 250) {
-            throw new Exception("SMTP ({$this->cfg['mailHost']}:{$this->cfg['mailPort']}) HELO/EHLO - $lastMessage", 0);
-            return false;
+            throw new Exception("SMTP ({$this->cfg['host']}:{$this->cfg['port']}) HELO/EHLO - $lastMessage", 0);
         }
     
         while(1) {
@@ -93,26 +93,23 @@ class SMTP implements \wf\mailer\MailerInterface {
             $lastMessage = fgets($fp, 512);
         }
     
-        if($this->cfg['mailAuth']) {
+        if($this->cfg['auth']) {
             fputs($fp, "AUTH LOGIN\r\n");
             $lastMessage = fgets($fp, 512);
             if(substr($lastMessage, 0, 3) != 334) {
-                throw new Exception("SMTP ({$this->cfg['mailHost']}:{$this->cfg['mailPort']}) AUTH LOGIN - $lastMessage", 0);
-                return false;
+                throw new Exception("SMTP ({$this->cfg['host']}:{$this->cfg['port']}) AUTH LOGIN - $lastMessage", 0);
             }
     
-            fputs($fp, base64_encode($this->cfg['mailUser'])."\r\n");
+            fputs($fp, base64_encode($this->cfg['user'])."\r\n");
             $lastMessage = fgets($fp, 512);
             if(substr($lastMessage, 0, 3) != 334) {
-                throw new Exception("SMTP ({$this->cfg['mailHost']}:{$this->cfg['mailPort']}) USERNAME - $lastMessage", 0);
-                return false;
+                throw new Exception("SMTP ({$this->cfg['host']}:{$this->cfg['port']}) USERNAME - $lastMessage", 0);
             }
     
-            fputs($fp, base64_encode($this->cfg['mailPass'])."\r\n");
+            fputs($fp, base64_encode($this->cfg['pass'])."\r\n");
             $lastMessage = fgets($fp, 512);
             if(substr($lastMessage, 0, 3) != 235) {
-                throw new Exception("SMTP ({$this->cfg['mailHost']}:{$this->cfg['mailPort']}) PASSWORD - $lastMessage", 0);
-                return false;
+                throw new Exception("SMTP ({$this->cfg['host']}:{$this->cfg['port']}) PASSWORD - $lastMessage", 0);
             }
     
             $emailFrom = $from;
@@ -124,8 +121,7 @@ class SMTP implements \wf\mailer\MailerInterface {
             fputs($fp, "MAIL FROM: <".preg_replace("/.*\\<(.+?)\\>.*/", "\\1", $from).">\r\n");
             $lastMessage = fgets($fp, 512);
             if(substr($lastMessage, 0, 3) != 250) {
-                throw new Exception("SMTP ({$this->cfg['mailHost']}:{$this->cfg['mailPort']}) MAIL FROM - $lastMessage", 0);
-                return false;
+                throw new Exception("SMTP ({$this->cfg['host']}:{$this->cfg['port']}) MAIL FROM - $lastMessage", 0);
             }
         }
     
@@ -134,15 +130,13 @@ class SMTP implements \wf\mailer\MailerInterface {
         if(substr($lastMessage, 0, 3) != 250) {
             fputs($fp, "RCPT TO: <".preg_replace("/.*\\<(.+?)\\>.*/", "\\1", $to).">\r\n");
             $lastMessage = fgets($fp, 512);
-            throw new Exception("SMTP ({$this->cfg['mailHost']}:{$this->cfg['mailPort']}) RCPT TO - $lastMessage", 0);
-            return false;
+            throw new Exception("SMTP ({$this->cfg['host']}:{$this->cfg['port']}) RCPT TO - $lastMessage", 0);
         }
     
         fputs($fp, "DATA\r\n");
         $lastMessage = fgets($fp, 512);
         if(substr($lastMessage, 0, 3) != 354) {
-            throw new Exception("SMTP ({$this->cfg['mailHost']}:{$this->cfg['mailPort']}) DATA - $lastMessage", 0);
-            return false;
+            throw new Exception("SMTP ({$this->cfg['host']}:{$this->cfg['port']}) DATA - $lastMessage", 0);
         }
     
         $headers .= 'Message-ID: <'.date('YmdHs').'.'.substr(md5($message.microtime()), 0, 6).rand(100000, 999999).'@'.@$_SERVER['HTTP_HOST'].">\r\n";
@@ -156,7 +150,7 @@ class SMTP implements \wf\mailer\MailerInterface {
         
         $lastMessage = fgets($fp, 512);
         if(substr($lastMessage, 0, 3) != 250) {
-            throw new Exception("SMTP ({$this->cfg['mailHost']}:{$this->cfg['mailPort']}) END - {$lastMessage}", 0);
+            throw new Exception("SMTP ({$this->cfg['host']}:{$this->cfg['port']}) END - {$lastMessage}", 0);
         }
         fputs($fp, "QUIT\r\n");
         

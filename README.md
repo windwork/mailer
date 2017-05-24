@@ -8,11 +8,11 @@ Windwork 发邮件组件
 // 使用smtp发送
 $cfg = array(
     'mailAdapter' => 'SMTP', // SMTP）使用smtp发送邮件；Mail）使用mail函数发送邮件
-    'mailPort' => 25,
-    'mailHost' => 'smtp服务器',
-    'mailAuth' => true,
-    'mailUser' => 'smtp账号',
-    'mailPass' => '邮箱密码',
+    'port' => 25,
+    'host' => 'smtp服务器',
+    'auth' => true,
+    'user' => 'smtp账号',
+    'pass' => '邮箱密码',
     'class'    => 'SMTP',
 );
 $class = "\\wf\\mailer\\strategy\\{$cfg['class']}";
