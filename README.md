@@ -6,23 +6,22 @@ Windwork 发邮件组件
 ## 使用案例
 ```
 // 使用smtp发送
-$cfg = array(
-    'mailAdapter' => 'SMTP', // SMTP）使用smtp发送邮件；Mail）使用mail函数发送邮件
+$cfg = [
+    'class' => 'SMTP', // SMTP）使用smtp发送邮件；Mail）使用mail函数发送邮件
     'port' => 25,
     'host' => 'smtp服务器',
     'auth' => true,
     'user' => 'smtp账号',
     'pass' => '邮箱密码',
-    'class'    => 'SMTP',
-);
+];
 $class = "\\wf\\mailer\\strategy\\{$cfg['class']}";
 $mailer = new $class($cfg);
 $mailer->send('收件人邮箱', '邮件标题', '邮件内容', '发件邮箱');
 
 // 使用内置mail函数发送
-$cfg = array(
+$cfg = [
     'class'    => 'Mail',
-);
+];
 $class = "\\wf\\mailer\\strategy\\{$cfg['class']}";
 $mailer = new $class($cfg);
 $mailer->send('收件人邮箱', '邮件标题', '邮件内容', '发件邮箱');
@@ -34,7 +33,8 @@ $mailer->send('收件人邮箱', '邮件标题', '邮件内容', '发件邮箱')
 /**
  * 发送邮件接口
  */
-interface MailerInterface {
+interface MailerInterface 
+{
     
     /**
      * 发送邮件
