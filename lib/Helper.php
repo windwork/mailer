@@ -46,7 +46,7 @@ class Helper
      */
     public static function encode($str)
     {
-        return '"=?utf-8?B?' . base64_encode($str) . "?=\"";
+        return '=?utf-8?B?' . base64_encode($str) . '?=';
     }
     
     /**

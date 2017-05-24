@@ -3,7 +3,7 @@
   "type" : "library",
   "description" : "windwork mailer component，Windwork 发邮件组件",
   "keywords": ["mailer","mail","smtp","sendmail"],
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "require" : {
     "php" : ">=5.5.0"
   },
