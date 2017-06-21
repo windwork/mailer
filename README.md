@@ -16,7 +16,10 @@ $cfg = [
 ];
 $class = "\\wf\\mailer\\strategy\\{$cfg['class']}";
 $mailer = new $class($cfg);
-$mailer->send('收件人邮箱', '邮件标题', '邮件内容', '发件邮箱');
+
+// 在windwork应用中使用下面的方式创建实例，不需要前面的代码，配置信息在config/app.php中设置
+//$mailer = srv('mailer');
+$mailer->send('收件人邮箱', '邮件标题', '邮件内容');
 
 // 使用内置mail函数发送
 $cfg = [

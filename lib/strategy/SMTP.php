@@ -45,6 +45,9 @@ class SMTP implements \wf\mailer\MailerInterface
         // 端口
         $this->cfg['port'] = empty($this->cfg['port']) ? 25 : $this->cfg['port'];
         
+        // SMTP发送邮件账号必须与发件人一致
+        $from = $this->cfg['user'];
+        
         $to      = \wf\mailer\Helper::emailEncode($to);
         $from    = \wf\mailer\Helper::emailEncode($from);
         $subject = \wf\mailer\Helper::encode($subject);        

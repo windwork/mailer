@@ -33,7 +33,7 @@ class Mail implements \wf\mailer\MailerInterface
      * {@inheritDoc}
      * @see \wf\mailer\MailerInterface::send()
      */
-    public function send($to, $subject, $message, $from, $cc = '', $bcc = '') 
+    public function send($to, $subject, $message, $from = '', $cc = '', $bcc = '') 
     {
         $to = \wf\mailer\Helper::emailEncode($to);
         $from = \wf\mailer\Helper::emailEncode($from);    

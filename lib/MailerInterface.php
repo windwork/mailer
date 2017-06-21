@@ -26,12 +26,12 @@ interface MailerInterface
      * @param string $to 收件邮箱
      * @param string $subject  邮件主题
      * @param string $message  邮件内容
-     * @param string $from  发件邮箱
+     * @param string $from = ''  发件邮箱，留空则使用配置中的邮箱账号
      * @param string $cc = '' 抄送，每个邮件用半角逗号隔开
      * @param string $bcc = ''  密送，每个邮件用半角逗号隔开
      * @return bool
      * @throws \wf\mailer\Exception
      */
-    public function send($to, $subject, $message, $from, $cc = '', $bcc = '');
+    public function send($to, $subject, $message, $from = '', $cc = '', $bcc = '');
 }
 
