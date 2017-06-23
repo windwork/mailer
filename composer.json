@@ -1,20 +1,26 @@
 {
-  "name" : "windwork/mailer",
-  "type" : "library",
-  "description" : "windwork mailer component，Windwork 发邮件组件",
-  "keywords": ["mailer","mail","smtp","sendmail"],
-  "version" : "0.5.0",
-  "require" : {
-    "php" : ">=5.5.0"
-  },
-  "license" : "MIT",
-  "autoload" : {
-    "psr-4" : {
-      "wf\\mailer\\" : "lib"
-    }
-  },
-  "authors" : [ {
-    "name" : "Windwork Community",
-    "homepage" : "http://windwork.org"
-  } ]
+	"name" : "windwork/mailer",
+	"type" : "library",
+	"description" : "windwork mailer component，Windwork 发邮件组件",
+	"keywords" : [
+		"mailer",
+		"mail",
+		"smtp",
+		"sendmail"
+	],
+	"version" : "0.5.1",
+	"require" : {
+		"php" : ">=5.5.0"
+	},
+	"license" : "MIT",
+	"autoload" : {
+		"psr-4" : {
+			"wf\\mailer\\" : "lib"
+		}
+	},
+	"authors" : [{
+			"name" : "Windwork Community",
+			"homepage" : "http://windwork.org"
+		}
+	]
 }
