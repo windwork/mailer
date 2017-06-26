@@ -41,7 +41,7 @@ class Helper
     }
     
     /**
-     * 
+     * 对邮件内容进行base64编码
      * @param string $str
      */
     public static function encode($str)

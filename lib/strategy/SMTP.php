@@ -36,7 +36,6 @@ class SMTP implements \wf\mailer\MailerInterface
     }
 
     /**
-     *
      * {@inheritDoc}
      * @see \wf\mailer\MailerInterface::send()
      */

@@ -8,7 +8,8 @@
 		"smtp",
 		"sendmail"
 	],
-	"version" : "0.5.1",
+	"version" : "0.6.0",
+	"time" : "2017-06-26-17:50:00",
 	"require" : {
 		"php" : ">=5.5.0"
 	},
