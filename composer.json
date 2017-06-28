@@ -6,7 +6,8 @@
 		"mailer",
 		"mail",
 		"smtp",
-		"sendmail"
+		"sendmail",
+		"postfix"
 	],
 	"version" : "0.6.0",
 	"time" : "2017-06-26-17:50:00",
