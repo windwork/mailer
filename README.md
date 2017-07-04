@@ -4,6 +4,17 @@ Windwork 发邮件组件
 如果服务器安装有邮件服务器，如sendmail等，则可以使用内置的mail函数发送邮件获得更高的性能和更多的个性化参数，否则使用smtp发送。
 *nix服务器上建议安装postfix邮件服务器，通过mail函数发送邮件。
 
+## 安装
+该组件已包含在Windwork框架中，如果你已安装Windwork框架则可以直接使用。
+
+- 安装方式一：通过composer安装（推荐）
+```
+composer require windwork/wf
+```
+
+- 安装方式二：传统方式安装
+[下载源码](https://github.com/windwork/wf/releases)后，解压源码到项目文件夹中，然后require_once $PATH_TO_WF/core/lib/Loader.php文件，即可自动加载组件中的类。
+
 # 使用方法
 ```
 1. 在 config/app.php中设置 srv.mailer 配置
