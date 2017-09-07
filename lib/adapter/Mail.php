@@ -7,14 +7,14 @@
  * @copyright Copyright (c) 2008-2017 Windwork Team. (http://www.windwork.org)
  * @license   http://opensource.org/licenses/MIT
  */
-namespace wf\mailer\strategy;
+namespace wf\mailer\adapter;
 
 use \wf\mailer\Exception;
 
 /**
  * 使用mail函数发邮件 
  * 
- * @package     wf.mailer.strategy
+ * @package     wf.mailer.adapter
  * @author      cm <cmpan@qq.com>
  * @link        http://docs.windwork.org/manual/wf.mailer.html
  * @since       0.1.0

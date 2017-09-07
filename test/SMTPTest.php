@@ -2,9 +2,9 @@
 require_once '../lib/Exception.php';
 require_once '../lib/Helper.php';
 require_once '../lib/MailerInterface.php';
-require_once '../lib/strategy/SMTP.php';
+require_once '../lib/adapter/SMTP.php';
 
-use \wf\mailer\strategy\SMTP;
+use \wf\mailer\adapter\SMTP;
 
 /**
  * SMTP test case.
@@ -50,7 +50,7 @@ class SMTPTest extends PHPUnit_Framework_TestCase {
     public function testSend() {
         $this->sMTP->send('cmpan@qq.com', '测试邮件', '测试邮件内容。。。。^_^', 'p_cm@163.com', 'Windwork·夏花', '小花');
         
-        $mailer = new \wf\mailer\strategy\SMTP($this->cfg);
+        $mailer = new \wf\mailer\adapter\SMTP($this->cfg);
         $mailer->send('cmpan@qq.com', '测试邮件', '测试邮件内容。。。。^_^', 'p_cm@163.com');
         
     }

@@ -25,7 +25,7 @@ composer require windwork/wf
 ```
 // 使用smtp发送
 $cfg = [
-    'class' => '\\wf\\mailer\\strategy\\SMTP', // SMTP）使用smtp发送邮件；Mail）使用mail函数发送邮件
+    'class' => '\\wf\\mailer\\adapter\\SMTP', // SMTP）使用smtp发送邮件；Mail）使用mail函数发送邮件
     'port' => 25,
     'host' => 'smtp服务器',
     'auth' => true,
@@ -41,7 +41,7 @@ $mailer->send('收件人邮箱', '邮件标题', '邮件内容');
 
 // 使用内置mail函数发送
 $cfg = [
-    'class'  => '\\wf\\mailer\\strategy\\Mail',
+    'class'  => '\\wf\\mailer\\adapter\\Mail',
     'user'   => 'xxx@xxx.com', // 发件邮箱
 ];
 $class = $cfg['class'];
